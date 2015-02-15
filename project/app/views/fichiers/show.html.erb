@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @fichier.name %>
+</p>
+
+<p>
+  <strong>Filepath:</strong>
+  <%= @fichier.filepath %>
+</p>
+
+<p>
+  <strong>Record date:</strong>
+  <%= @fichier.record_date %>
+</p>
+
+<%= link_to 'Edit', edit_fichier_path(@fichier) %> |
+<%= link_to 'Back', fichiers_path %>
