@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+
   resources :fichiers
 
   root to: 'fichiers#index'
+
+
+
+  match '/script', to: 'home#returnscript', via: [:get, :post]
+  match '/json', to: 'home#recupValeurs', via: [:get, :post]
 
 
 
