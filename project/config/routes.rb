@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  root to: 'home#index'
+
+  resources :fichiers
+
+  root to: 'fichiers#index'
+
+
+
   match '/script', to: 'home#returnscript', via: [:get, :post]
   match '/json', to: 'home#recupValeurs', via: [:get, :post]
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
