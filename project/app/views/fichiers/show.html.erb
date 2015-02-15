@@ -1,19 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @fichier.name %>
-</p>
+</h1>
 
 <p>
-  <strong>Filepath:</strong>
-  <%= @fichier.filepath %>
-</p>
-
-<p>
-  <strong>Record date:</strong>
+  <strong>Date:</strong>
   <%= @fichier.record_date %>
 </p>
+
+<%= render 'tab_final' %>
 
 <%= link_to 'Edit', edit_fichier_path(@fichier) %> |
 <%= link_to 'Back', fichiers_path %>

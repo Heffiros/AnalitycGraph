@@ -10,6 +10,27 @@ class FichiersController < ApplicationController
   # GET /fichiers/1
   # GET /fichiers/1.json
   def show
+    # SCRIPT DE MALTUIN
+    tabs = JSON.parse(@fichier.filepath.read)
+    categs = tabs['history']['items']['2']
+    tab_final = {}
+    categs.each do |key, categ|
+        tab_temp = []
+        points = categ['points']
+        time_all = points.map{|p| p[0]}
+        value_all = points.map{|p| p[1]}
+        #p moyenne(value_all.select {|p| p < value_all.max/5*3})
+        median = median(value_all) * 2
+        value_all.each_with_index do |value, index|
+            if value > median
+                tab_temp << [value, time_all[index]]
+            end
+        end
+        tab_final[key] = tab_temp
+    end
+    #tab_final['json'] = json
+    p tab_final
+    @tab_final = tab_final
   end
 
   # GET /fichiers/new
@@ -70,5 +91,11 @@ class FichiersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def fichier_params
       params.require(:fichier).permit(:name, :filepath, :record_date)
+    end
+
+    def median(array)
+        sorted = array.sort
+        len = sorted.length
+        return (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
     end
 end
