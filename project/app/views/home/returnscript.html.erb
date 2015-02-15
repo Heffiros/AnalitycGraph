@@ -1,1 +1,45 @@
-<%= @a%>
+<div id="test" style="width:100%; height:400px;"></div>
+<script>
+
+$(document).ready(function() {
+
+    var options = {
+        chart: {
+            renderTo: 'container',
+            type: 'spline'
+        },
+        series: [{}]
+    };
+
+    options.series[0].data = <%= @test%>;
+    var chart = new Highcharts.Chart(options);
+
+});
+
+// $(function () { 
+//     $('#test').highcharts({
+//         chart: {
+//             type: 'line'
+//         },
+//         title: {
+//             text: 'Temps serveur'
+//         },
+//         xAxis: {
+//             categories: ['Apples', 'Bananas', 'Oranges']
+//         },
+//         yAxis: {
+//             title: {
+//                 text: 'Fruit eaten'
+//             }
+//         },
+//         series: [{
+//             name: 'Jane',
+//             data: [1, 0, 4]
+//         }, {
+//             name: 'John',
+//             data: [5, 7, 3]
+//         }]
+//     });
+// });
+</script>
+
