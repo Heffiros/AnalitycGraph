@@ -1,3 +1,186 @@
 // Place all the styles related to the fichier controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new_file {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c7c1c7), color-stop(1, #ffffff) );
+  background:-moz-linear-gradient( center top, #c7c1c7 5%, #ffffff 100% );
+  background-color:#c7c1c7;
+  -webkit-border-top-left-radius:20px;
+  -moz-border-radius-topleft:20px;
+  border-top-left-radius:20px;
+  -webkit-border-top-right-radius:20px;
+  -moz-border-radius-topright:20px;
+  border-top-right-radius:20px;
+  -webkit-border-bottom-right-radius:20px;
+  -moz-border-radius-bottomright:20px;
+  border-bottom-right-radius:20px;
+  -webkit-border-bottom-left-radius:20px;
+  -moz-border-radius-bottomleft:20px;
+  border-bottom-left-radius:20px;
+  text-indent:0px;
+  border:1px solid #ffffff;
+  display:inline-block;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:15px;
+  font-weight:bold;
+  font-style:normal;
+  height:39px;
+  line-height:39px;
+  width:126px;
+  text-align:center;
+}
+.new_file:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #808080), color-stop(1, #c7c1c7) );
+  background:-moz-linear-gradient( center top, #808080 5%, #c7c1c7 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#808080', endColorstr='#c7c1c7');
+  background-color:#808080;
+}.new_file:active {
+  position:relative;
+  top:1px;
+}
+
+.button {
+  -moz-box-shadow:inset 0px 1px 0px 0px #050505;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #050505;
+  box-shadow:inset 0px 1px 0px 0px #050505;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #000000), color-stop(1, #808080) );
+  background:-moz-linear-gradient( center top, #000000 5%, #808080 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#808080');
+  background-color:#000000;
+  -webkit-border-top-left-radius:20px;
+  -moz-border-radius-topleft:20px;
+  border-top-left-radius:20px;
+  -webkit-border-top-right-radius:20px;
+  -moz-border-radius-topright:20px;
+  border-top-right-radius:20px;
+  -webkit-border-bottom-right-radius:20px;
+  -moz-border-radius-bottomright:20px;
+  border-bottom-right-radius:20px;
+  -webkit-border-bottom-left-radius:20px;
+  -moz-border-radius-bottomleft:20px;
+  border-bottom-left-radius:20px;
+  text-indent:0px;
+  border:1px solid #ffffff;
+  display:inline-block;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:15px;
+  font-weight:bold;
+  font-style:normal;
+  height:39px;
+  line-height:39px;
+  width:126px;
+  text-decoration:none;
+  text-align:center;
+  text-shadow:1px 1px 0px #666366;
+}
+.button:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #808080), color-stop(1, #000000) );
+  background:-moz-linear-gradient( center top, #808080 5%, #000000 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#808080', endColorstr='#000000');
+  background-color:#808080;
+}.button:active {
+  position:relative;
+  top:1px;
+}
+
+
+.tableau {
+  margin:0px;padding:0px;
+  width:100%;
+  box-shadow: 10px 10px 5px #888888;
+  border:1px solid #000000;
+  
+  -moz-border-radius-bottomleft:0px;
+  -webkit-border-bottom-left-radius:0px;
+  border-bottom-left-radius:0px;
+  
+  -moz-border-radius-bottomright:0px;
+  -webkit-border-bottom-right-radius:0px;
+  border-bottom-right-radius:0px;
+  
+  -moz-border-radius-topright:0px;
+  -webkit-border-top-right-radius:0px;
+  border-top-right-radius:0px;
+  
+  -moz-border-radius-topleft:0px;
+  -webkit-border-top-left-radius:0px;
+  border-top-left-radius:0px;
+}.tableau table{
+    border-collapse: collapse;
+        border-spacing: 0;
+  width:100%;
+  height:100%;
+  margin:0px;padding:0px;
+}.tableau tr:last-child td:last-child {
+  -moz-border-radius-bottomright:0px;
+  -webkit-border-bottom-right-radius:0px;
+  border-bottom-right-radius:0px;
+}
+.tableau table tr:first-child td:first-child {
+  -moz-border-radius-topleft:0px;
+  -webkit-border-top-left-radius:0px;
+  border-top-left-radius:0px;
+}
+.tableau table tr:first-child td:last-child {
+  -moz-border-radius-topright:0px;
+  -webkit-border-top-right-radius:0px;
+  border-top-right-radius:0px;
+}.tableau tr:last-child td:first-child{
+  -moz-border-radius-bottomleft:0px;
+  -webkit-border-bottom-left-radius:0px;
+  border-bottom-left-radius:0px;
+}.tableau tr:hover td{
+  background-color:#ffffff;
+    
+
+}
+.tableau td{
+  vertical-align:middle;
+  
+  background-color:#e5e5e5;
+
+  border:1px solid #000000;
+  border-width:0px 1px 1px 0px;
+  text-align:left;
+  padding:7px;
+  font-size:14px;
+  font-family:Arial;
+  font-weight:bold;
+  color:#000000;
+}.tableau tr:last-child td{
+  border-width:0px 1px 0px 0px;
+}.tableau tr td:last-child{
+  border-width:0px 0px 1px 0px;
+}.tableau tr:last-child td:last-child{
+  border-width:0px 0px 0px 0px;
+}
+.tableau tr:first-child td{
+    background:-o-linear-gradient(bottom, #cccccc 5%, #b2b2b2 100%);  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #cccccc), color-stop(1, #b2b2b2) );
+  background:-moz-linear-gradient( center top, #cccccc 5%, #b2b2b2 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#cccccc", endColorstr="#b2b2b2");  background: -o-linear-gradient(top,#cccccc,b2b2b2);
+
+  background-color:#cccccc;
+  border:0px solid #000000;
+  text-align:center;
+  border-width:0px 0px 1px 1px;
+  font-size:14px;
+  font-family:Arial;
+  font-weight:bold;
+  color:#000000;
+}
+.tableau tr:first-child:hover td{
+  background:-o-linear-gradient(bottom, #cccccc 5%, #b2b2b2 100%);  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #cccccc), color-stop(1, #b2b2b2) );
+  background:-moz-linear-gradient( center top, #cccccc 5%, #b2b2b2 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#cccccc", endColorstr="#b2b2b2");  background: -o-linear-gradient(top,#cccccc,b2b2b2);
+
+  background-color:#cccccc;
+}
+.tableau tr:first-child td:first-child{
+  border-width:0px 0px 1px 0px;
+}
+.tableau tr:first-child td:last-child{
+  border-width:0px 0px 1px 1px;
+}

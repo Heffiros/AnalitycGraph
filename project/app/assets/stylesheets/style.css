@@ -156,3 +156,53 @@ a {
   }
 }
 
+.field{ 
+  color:black;
+}
+
+.field label{
+  color:white;
+}
+
+.actions input {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c7c1c7), color-stop(1, #ffffff) );
+  background:-moz-linear-gradient( center top, #c7c1c7 5%, #ffffff 100% );
+  background-color:#c7c1c7;
+  -webkit-border-top-left-radius:20px;
+  -moz-border-radius-topleft:20px;
+  border-top-left-radius:20px;
+  -webkit-border-top-right-radius:20px;
+  -moz-border-radius-topright:20px;
+  border-top-right-radius:20px;
+  -webkit-border-bottom-right-radius:20px;
+  -moz-border-radius-bottomright:20px;
+  border-bottom-right-radius:20px;
+  -webkit-border-bottom-left-radius:20px;
+  -moz-border-radius-bottomleft:20px;
+  border-bottom-left-radius:20px;
+  text-indent:0px;
+  border:1px solid #ffffff;
+  display:inline-block;
+  color:#000000;
+  font-family:Arial;
+  font-size:15px;
+  font-weight:bold;
+  font-style:normal;
+  height:39px;
+  line-height:39px;
+  width:126px;
+  text-align:center;
+}
+.actions input:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #808080), color-stop(1, #c7c1c7) );
+  background:-moz-linear-gradient( center top, #808080 5%, #c7c1c7 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#808080', endColorstr='#c7c1c7');
+  background-color:#808080;
+}.actions input:active {
+  position:relative;
+  top:1px;
+}
+
+a {
+  color:white;
+}
