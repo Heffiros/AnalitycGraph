@@ -12,9 +12,9 @@ class FichiersController < ApplicationController
   def show
     # SCRIPT DE MALTUIN
     tabs = JSON.parse(@fichier.filepath.read)
-    categs = tabs['history']['items']['2']
-    tab_final = {}
-    categs.each do |key, categ|
+    @categs = tabs['history']['items']['2']
+    @tab_final = {}
+    @categs.each do |key, categ|
         tab_temp = []
         points = categ['points']
         time_all = points.map{|p| p[0]}
@@ -26,12 +26,23 @@ class FichiersController < ApplicationController
                 tab_temp << [value, time_all[index]]
             end
         end
-        tab_final[key] = tab_temp
+        @tab_final[key] = tab_temp
     end
-    #tab_final['json'] = json
-    p tab_final
-    @tab_final = tab_final
+
+    @points_by_time = {}
+    if @categs.count != 0
+      @categs.values.first['points'].each_with_index do |point, categ_idx|
+        timestamp = point[0]
+        by_categ = {}
+        @categs.each do |categ, points|
+          by_categ[categ] = points['points'][categ_idx][1]
+        end
+        @points_by_time[timestamp] = by_categ
+      end
+    end
   end
+
+
 
   # GET /fichiers/new
   def new
