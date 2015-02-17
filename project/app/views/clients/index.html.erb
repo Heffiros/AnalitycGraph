@@ -1,29 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Clients</h1>
-
+<style>
+  a.button { color: white; }
+  a.button:hover { color: white;}
+  a.new_file { color: black; }
+  a.new_file:hover { color: white;}
+  a.ent { color: white; }
+  a.ent:hover { color: white;}
+</style>
+<h1>Liste Clients</h1>
+<br>
+<%= link_to 'Nouveau Client', new_client_path,class: 'new_file' %>
+<br><br>
+<div class="tableau" >
 <table>
-  <thead>
     <tr>
-      <th>Id</th>
-      <th>Client</th>
-      <th colspan="3"></th>
+      <td>Client</td>
+      <td class='col_button'>Regarder</td>
+      <td class='col_button'>Editer</td>
+      <td class='col_button'>Detruire</td>
     </tr>
-  </thead>
-
-  <tbody>
     <% @clients.each do |client| %>
       <tr>
-        <td><%= client.id %></td>
         <td><%= client.client %></td>
-        <td><%= link_to 'Show', client %></td>
-        <td><%= link_to 'Edit', edit_client_path(client) %></td>
-        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Regarder', client, class: 'button' %></td>
+        <td><%= link_to 'Editer', edit_client_path(client), class: 'button' %></td>
+        <td><%= link_to 'Detruire', client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' %></td>
       </tr>
     <% end %>
-  </tbody>
 </table>
-
+</div>
 <br>
 
-<%= link_to 'New Client', new_client_path %>
+

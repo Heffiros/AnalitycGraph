@@ -1,23 +1,21 @@
 <style>
 
   a.button { color: white; }
-
   a.button:hover { color: white;}
-
   a.new_file { color: black; }
-
   a.new_file:hover { color: white;}
-
+  a.ent { color: black; }
+  a.ent:hover { color: white;}
 </style>
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Fichiers</h1>
+<h1>Liste Fichiers</h1>
 <br>
 <%= link_to 'Nouveau Fichier', new_fichier_path, class: 'new_file' %>
 <br><br>
 Recherche:
 <% @clients.each do |fichier| %>
-    <%= link_to_if fichier.client, fichier.client || '(pas de client)', fichiers_path(client_id: fichier.id) %>
+    <%= link_to_if fichier.client, fichier.client || '(pas de client)', fichiers_path(client_id: fichier.id), class: 'ent' %>
 <% end %>
 
 <br><br>
@@ -29,7 +27,9 @@ Recherche:
       <td>Site</td>
       <td>Chemin du fichier</td>
       <td>Date de création</td>
-      <td colspan="3"></td>
+     <td class='col_button'>Regarder</td>
+     <td class='col_button'>Editer</td>
+     <td class='col_button'>Detruire</td>
     </tr>
     <% @fichiers.each do |fichier| %>
       <tr>
@@ -37,9 +37,9 @@ Recherche:
         <td><%= fichier.client.try(:client) || '(pas de client)' %></td>
         <td><%= fichier.filepath %></td>
         <td><%= fichier.record_date %></td>
-        <td><%= link_to 'Show', fichier, class: 'button' %></td>
-        <td><%= link_to 'Edit', edit_fichier_path(fichier), class: 'button' %></td>
-        <td><%= link_to 'Destroy', fichier, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' %></td>
+        <td><%= link_to 'Regarder', fichier, class: 'button' %></td>
+        <td><%= link_to 'Editer', edit_fichier_path(fichier), class: 'button' %></td>
+        <td><%= link_to 'Detruire', fichier, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' %></td>
       </tr>
     <% end %>
 </table>
