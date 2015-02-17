@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215141839) do
+ActiveRecord::Schema.define(version: 20150217084418) do
 
   create_table "fichiers", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150215141839) do
     t.date     "record_date"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "tolerance"
   end
 
 end

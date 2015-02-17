@@ -12,22 +12,46 @@ class FichiersController < ApplicationController
   def show
     # SCRIPT DE MALTUIN
     tabs = JSON.parse(@fichier.filepath.read)
-    @categs = tabs['history']['items']['2']
-    @tab_final = {}
-    @categs.each do |key, categ|
-        tab_temp = []
-        points = categ['points']
-        time_all = points.map{|p| p[0]}
-        value_all = points.map{|p| p[1]}
-        #p moyenne(value_all.select {|p| p < value_all.max/5*3})
-        median = median(value_all) * 2
-        value_all.each_with_index do |value, index|
-            if value > median
-                tab_temp << [value, time_all[index]]
+    #tabs = JSON.parse(json)
+        @categs = tabs['history']['items']['2']
+        timestamp = tabs['history']['time_range']
+        @reponse = {}
+        @categs.each do |key, categ|
+            tab_temp = []
+            points = categ['points']
+            time_all = points.map{|p| p[0]}
+            value_all = points.map{|p| p[1]}
+            var = variance(value_all, moyenne(value_all))
+            e_t = Math.sqrt(variance(value_all, moyenne(value_all)))
+            value_all.each_with_index do |value, index|
+                p value
+                p verif(value, e_t)
+                if value > e_t+moyenne(value_all)
+                    tab_temp << time_all[index]
+                end
             end
+            last_time = 0
+            en_pic =0
+            start = 0
+            tab_final = []
+            tab_temp.each do |timedot|
+                if (last_time + timestamp).to_i == timedot or last_time == 0
+                    if en_pic == 0
+                        start = (timedot - timestamp).to_i
+                        en_pic = 1
+                    end
+                    last_time = timedot
+                else
+                    tab_final << [start, (last_time+timestamp).to_i]
+                    start = (timedot - timestamp).to_i
+                    last_time = timedot
+                end
+            end
+            @reponse[key] = tab_final
         end
-        @tab_final[key] = tab_temp
-    end
+        p @reponse
+
+        #reponse['json'] = json
 
     @points_by_time = {}
     if @categs.count != 0
@@ -101,12 +125,27 @@ class FichiersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fichier_params
-      params.require(:fichier).permit(:name, :filepath, :record_date)
+      params.require(:fichier).permit(:name, :filepath, :record_date, :tolerance)
     end
 
-    def median(array)
-        sorted = array.sort
-        len = sorted.length
-        return (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
+
+    def moyenne(array)
+        if array.count > 0
+            return (array.inject(:+)/array.length)
+        else
+            return 0
+        end
+    end
+
+     def variance(array, m)
+        total = 0
+        array.each do |valeur|
+            total += (valeur - m)**2
+        end
+        return total/array.count
+    end
+
+    def verif(nombre, var)
+        return Math.sqrt((nombre/var)**2)
     end
 end

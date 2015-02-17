@@ -35,30 +35,22 @@ table {
     <th>Charge</th>
     <th>Date</th>
   </tr>
-
-<% @tab_final.each do |key, scop| %>
-   <% if scop.size != 0 %>
-   <tr>
-        <% scop.each do |value| %>
-    <td> <%= key %> </td>
-            <% value.each do |tab|  %>
-                <td>
-                    <% if tab.class != Float %>
-                        <%= Time.at(tab) %>
-                    <%else%>
-                        <%=tab%>
-                    <%end%>
-                </td>
-            <% end %>
-   <tr>
-    <% end %>
-<% end %>
-        
+<% @reponse.each do |key, value| %>
+  <% value.each do |timming| %>
+   <% tim = timming.second - timming.first%>
+   <% if tim != 0 %>
+   <td>
+   <%= tim %>
+   </td>
+   <% end %>
+  <%end%>
 <%end%>
+        
 </table>
 </br>
 
-<div id="graph" style="width:100%; height:400px;"></div>
+<div id="graph" style="width:100%; height:400px;"></div><br/>
+<div id="chart_div" style="width:100%; height:400px;"></div>
 <script>
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
@@ -79,7 +71,32 @@ table {
 
         var chart = new google.visualization.AreaChart(document.getElementById('graph'));
         chart.draw(data, options);
+        
+        var circle = new google.visualization.DataTable();
+        circle.addColumn('string', 'Topping');
+        circle.addColumn('number', 'Slices');
+        circle.addRows(
+          <%= raw @reponse.map {|key, value|
+            [key, value.count]
+          } %>
+        );
+
+        // Set chart options
+        var options = {'title':'Répartition des pics',
+                       'width':940,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(circle, options);
+
+
+
+
       }
+    </script>
+
+
     </script>
 
 </script>

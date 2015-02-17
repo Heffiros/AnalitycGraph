@@ -4,7 +4,7 @@ class CreateFichiers < ActiveRecord::Migration
       t.string :name
       t.string :filepath
       t.date :record_date
-
+      t.integer :tolerance	
       t.timestamps null: false
     end
   end
