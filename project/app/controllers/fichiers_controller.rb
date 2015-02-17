@@ -5,6 +5,11 @@ class FichiersController < ApplicationController
   # GET /fichiers.json
   def index
     @fichiers = Fichier.all
+    if params[:client_id]
+      @fichiers = @fichiers.where(client_id: params[:client_id])
+    end
+
+    @clients = Client.all
   end
 
   # GET /fichiers/1
@@ -96,12 +101,13 @@ class FichiersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fichier
+
       @fichier = Fichier.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fichier_params
-      params.require(:fichier).permit(:name, :filepath, :record_date)
+      params.require(:fichier).permit(:name, :filepath, :record_date, :client_id)
     end
 
     def median(array)

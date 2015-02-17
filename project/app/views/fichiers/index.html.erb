@@ -14,11 +14,18 @@
 <br>
 <%= link_to 'Nouveau Fichier', new_fichier_path, class: 'new_file' %>
 <br><br>
+Recherche:
+<% @clients.each do |fichier| %>
+    <%= link_to_if fichier.client, fichier.client || '(pas de client)', fichiers_path(client_id: fichier.id) %>
+<% end %>
+
+<br><br>
 
 <div class="tableau" >
 <table>
     <tr>
       <td>Nom</td>
+      <td>Site</td>
       <td>Chemin du fichier</td>
       <td>Date de création</td>
       <td colspan="3"></td>
@@ -26,6 +33,7 @@
     <% @fichiers.each do |fichier| %>
       <tr>
         <td><%= fichier.name %></td>
+        <td><%= fichier.client.try(:client) || '(pas de client)' %></td>
         <td><%= fichier.filepath %></td>
         <td><%= fichier.record_date %></td>
         <td><%= link_to 'Show', fichier, class: 'button' %></td>

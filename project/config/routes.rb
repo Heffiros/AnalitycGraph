@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :clients
+
   resources :fichiers
 
   root to: 'fichiers#index'
