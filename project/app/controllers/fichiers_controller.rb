@@ -5,6 +5,11 @@ class FichiersController < ApplicationController
   # GET /fichiers.json
   def index
     @fichiers = Fichier.all
+    if params[:client_id]
+      @fichiers = @fichiers.where(client_id: params[:client_id])
+    end
+
+    @clients = Client.all
   end
 
   # GET /fichiers/1
@@ -58,6 +63,7 @@ class FichiersController < ApplicationController
           by_categ[categ] = points['points'][categ_idx][1]
         end
         @points_by_time[timestamp] = by_categ
+        @couleur = ['#2870A8', '#FB2E38', '#FFC620', '#FF6A2F', '#7B28AF', "#CF2686", "#AEEF2C", "#1D9E9E", "#C3713C"]
       end
     end
   end
@@ -116,12 +122,13 @@ class FichiersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fichier
+
       @fichier = Fichier.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fichier_params
-      params.require(:fichier).permit(:name, :filepath, :record_date, :tolerance)
+      params.require(:fichier).permit(:name, :filepath, :record_date, :client_id,:tolerance)
     end
 
 

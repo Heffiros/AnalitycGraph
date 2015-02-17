@@ -20,12 +20,16 @@
     <%= f.file_field :filepath %>
   </div>
   <div class="field">
+    <%= f.label :client_id %><br>
+    <%= select("fichier", "client_id", Client.all.collect {|p| [ p.client, p.id ] }, {include_blank: true}) %>
+  </div>
+  <div class="field">
     <%= f.label :record_date %><br>
     <%= f.date_select :record_date %>
   </div>
   <div class="field">
     <%= f.label :tolerance %></br>
-    <%= f.number_field :tolerance, in: 1...100, :required => true, :value =>1%>
+    <%= f.number_field :tolerance, in: 1...101, :required => true, :value =>1%>
   <div class="actions">
     <%= f.submit %>
   </div>

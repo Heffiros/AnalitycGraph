@@ -7,15 +7,17 @@
     <th>Fin</th>
     <th>Durée</th>
   </tr>
+  <%i = 0%>
 <% @reponse.each do |key, value| %>
   <tr>
   <% value.each do |timming| %>
-  <td><%= key %>
-   <td><%= nice_date(timming.first) %></td>
-   <td><%= nice_date(timming.second) %></td>
-   <td><%= diff_date(timming.first, timming.second) %></td>
+  <td style="background-color:<%= @couleur[i]%>" ><%= key %></td>
+   <td style="background-color:<%= @couleur[i]%>"><%= nice_date(timming.first) %></td>
+   <td style="background-color:<%= @couleur[i]%>"><%= nice_date(timming.second) %></td>
+   <td style="background-color:<%= @couleur[i]%>"><%= diff_date(timming.first, timming.second) %></td>
 </tr>
   <%end%>
+<%i = i + 1%>
 <%end%>
         
 </table>
@@ -38,7 +40,10 @@
         var options = {
           title: '<%= @fichier.name %>',
           hAxis: {title: 'GraphAnalitycs',  titleTextStyle: {color: '#333'}},
-          vAxis: {minValue: 0}
+          vAxis: {minValue: 0},
+          colors: <%= raw @couleur.map {|value|
+            [value]}
+           %>
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('graph'));
@@ -56,7 +61,11 @@
         // Set chart options
         var options = {'title':'Répartition des pics',
                        'width':940,
-                       'height':300};
+                       'height':300,
+                     colors: <%= raw @couleur.map {|value|
+            [value]}
+           %>,
+                   is3D: true};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
