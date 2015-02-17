@@ -39,7 +39,7 @@ class FichiersController < ApplicationController
                     i +1
                 else
                     stop = tab_temp[i]
-                    tab_final << [(start - timestamp).to_i, (stop + timestamp).to_i]
+                    tab_final << [(start - (timestamp/2)).to_i, (stop + (timestamp/2)).to_i]
                     start = 0
                 end
             end

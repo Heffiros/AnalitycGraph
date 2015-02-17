@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :tolerance %></br>
-    <%= f.number_field :tolerance %>
+    <%= f.number_field :tolerance, in: 1...100, :required => true, :value =>1%>
   <div class="actions">
     <%= f.submit %>
   </div>
