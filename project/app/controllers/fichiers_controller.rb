@@ -29,27 +29,23 @@ class FichiersController < ApplicationController
             var = variance(value_all, moyenne(value_all))
             e_t = Math.sqrt(variance(value_all, moyenne(value_all)))
             value_all.each_with_index do |value, index|
-                p value
-                p verif(value, e_t)
-                if value > e_t+moyenne(value_all)
+                if value > e_t+(moyenne(value_all)*(2 / @fichier.tolerance))
                     tab_temp << time_all[index]
                 end
             end
-            last_time = 0
-            en_pic =0
             start = 0
             tab_final = []
-            tab_temp.each do |timedot|
-                if (last_time + timestamp).to_i == timedot or last_time == 0
-                    if en_pic == 0
-                        start = (timedot - timestamp).to_i
-                        en_pic = 1
-                    end
-                    last_time = timedot
+            last_time = 0
+            for i in 0..(tab_temp.count-1)
+                if start == 0 
+                    start  = tab_temp[i]
+                end
+                if (tab_temp[i]+timestamp).to_i == tab_temp[i+1]
+                    i +1
                 else
-                    tab_final << [start, (last_time+timestamp).to_i]
-                    start = (timedot - timestamp).to_i
-                    last_time = timedot
+                    stop = tab_temp[i]
+                    tab_final << [(start - timestamp).to_i, (stop + timestamp).to_i]
+                    start = 0
                 end
             end
             @reponse[key] = tab_final
