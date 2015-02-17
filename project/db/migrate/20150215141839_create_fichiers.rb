@@ -3,8 +3,8 @@ class CreateFichiers < ActiveRecord::Migration
     create_table :fichiers do |t|
       t.string :name
       t.string :filepath
-      t.date :record_date	
-
+      t.date :record_date
+      t.integer :tolerance	
       t.timestamps null: false
     end
   end

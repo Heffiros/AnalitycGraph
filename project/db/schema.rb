@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20150216175153) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+ActiveRecord::Schema.define(version: 20150217084418) do
 
   create_table "fichiers", force: :cascade do |t|
     t.string   "name"
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150216175153) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "client_id"
+    t.integer  "tolerance"
   end
 
 end
