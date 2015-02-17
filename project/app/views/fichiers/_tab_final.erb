@@ -32,17 +32,18 @@ table {
 <table style="width:100%">
   <tr>
     <th>Catégorie</th>
-    <th>Charge</th>
-    <th>Date</th>
+    <th>Début</th>
+    <th>Fin</th>
+    <th>Durée</th>
   </tr>
 <% @reponse.each do |key, value| %>
+  <tr>
   <% value.each do |timming| %>
-   <% tim = timming.second - timming.first%>
-   <% if tim != 0 %>
-   <td>
-   <%= tim %>
-   </td>
-   <% end %>
+  <td><%= key %>
+   <td><%= nice_date(timming.first) %></td>
+   <td><%= nice_date(timming.second) %></td>
+   <td><%= diff_date(timming.first, timming.second) %></td>
+</tr>
   <%end%>
 <%end%>
         
